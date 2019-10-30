@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shopping List</title>
+</head>
+<body>
+  <h1>My Shopping List</h1>
+  <div>
+    Enter a new item:
+    <input type="text" id="input">
+    <button type="submit" id="submit">Add Item</button>
+  </div>
+  <ul>
+
+  </ul>
+
+  <script>
+    const button = document.querySelector('#submit')
+    button.addEventListener('click', () => {
+      const newItem = document.createElement('li')
+      const delButton = document.createElement('button')  // 새로운 태그 만들기
+      delButton.innerText = 'Delete'
+      const ul = document.querySelector('ul')
+      const input = document.querySelector('input')
+      newItem.innerText = input.value
+      ul.appendChild(newItem)
+      newItem.appendChild(delButton)
+      delButton.addEventListener('click', () => {
+        newItem.remove()
+          }
+      )
+    })
+  </script>
+</body>
+</html>

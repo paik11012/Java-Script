@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>Document</title>
+  <style>
+    .bg {
+      background-color: #f7f7f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+  </style>
+</head>
+<body>
+<div class="bg">
+  <img
+          id="dino"
+          width="100px"
+          height="100px"
+          src="https://is4-ssl.mzstatic.com/image/thumb/Purple118/v4/88/e5/36/88e536d4-8a08-7c3b-ad29-c4e5dabc9f45/AppIcon-1x_U007emarketing-sRGB-85-220-0-6.png/246x0w.jpg"
+          alt="dino"
+  />
+</div>
+
+<script>
+  const bg = document.querySelector('.bg')
+  const dino = bg.querySelector('#dino')
+  // 삭제
+  // dino.remove()
+  // bg.firstElementChild.remove()
+  // bg.lastElementChild.remove()
+  // bg.removeChild(dino)
+
+  // 실습 body에 자식 element가 하나도 없을 때까지 element를 삭제, 힌트: while 이용
+  // 아무것도 없을 때 element child불러오면 null
+  // const body = document.querySelector('body')  // document.body 가능
+  // while (body.firstElementChild !== null){
+  //   body.firstElementChild.remove()  // null.remove가 되어 에러가 뜬다
+  // }
+
+  // 새로운 요소 추가
+  // dino.remove()
+  // const newDino = document.createElement('img')
+  // newDino.src = 'https://store-images.s-microsoft.com/image/apps.38351.14426311725358695.736eb785-1d29-478c-a909-1900849773e9.4247f5ee-1daa-4c97-96c2-23868f1fbc45?mode=scale&q=90&h=200&w=200&background=%230078D7'
+  // newDino.alt = 'dinosaur'
+  // // 대상에 요소 추가하기
+  // bg.appendChild(newDino)
+  // bg.insertBefore(newDino, bg.firstElementChild)\
+
+  //Event Listener
+  // dino.addEventListener('click', event => {
+  //   console.log(event)
+  // })
+  // document.addEventListener('keydown', event => {
+  //   console.log(event)
+  // })
+
+  // 방향키를 눌렀을 때만 EVENT를 출력할 수 있도록 조건문 작성
+  let x = 300
+  let y = 300
+  dino.style.position = 'absolute';
+  dino.style.top = `${y}px`  // 처음시작점 설정
+  dino.style.left = `${x}px`
+  document.addEventListener('keydown', event => {
+    if(event.key === 'ArrowUp') {
+      console.log(y)
+      y -= 20
+      dino.style.top = `${y}px`
+    } else if (event.key === 'ArrowDown') {
+      y += 20
+      dino.style.top = `${y}px`
+    } else if (event.key === 'ArrowRight') {
+      x += 20
+      dino.style.left = `${x}px`
+    } else if (event.key === 'ArrowLeft') {
+      x -= 20
+      dino.style.left = `${x}px`
+    }
+  })
+
+  // 마우스 올라가면 피하기 게임 mouseover, math.random, window.innerwidth
+  dino.addEventListener('mouseover', ()=>{
+    const newH = window.innerHeight * Math.random();
+    const newW = window.innerWidth * Math.random();
+    dino.style.left = newW + 'px'
+    dino.style.top = newH + 'px'
+  })
+  // if (event.key === 'ArrowUp' || event.key === 'ArrowDown' || event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+  //   console.log(event)
+  // }
+  // })
+
+</script>
+</body>
+</html>
