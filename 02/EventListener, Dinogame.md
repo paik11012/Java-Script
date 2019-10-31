@@ -238,14 +238,22 @@ create element(특정 태그)
   </ul>
   <script>
     const button = document.querySelector('#submit')
+    const ul = document.querySelector('ul')
+    // 클릭하면 실행되는 함수 등록
     button.addEventListener('click', () => {
-      const newItem = document.createElement('li')
-      const delButton = document.createElement('button')  // 새로운 태그 만들기
-      delButton.innerText = 'Delete'
-      const ul = document.querySelector('ul')
       const input = document.querySelector('input')
+      const newItem = document.createElement('li')
       newItem.innerText = input.value
+      if (!newItem.innerText) {  // 경고글 띄우기
+        alert('무언가를 입력하세요')
+        return
+      }
       ul.appendChild(newItem)
+      input.value = ''  // input value 초기화
+
+      // delete
+      const delButton = document.createElement('button')  // 새로운 태그 만들기
+      delButton.innerText = 'Delete'  // 버튼에 써질 글
       newItem.appendChild(delButton)
       delButton.addEventListener('click', () => {
         newItem.remove()
