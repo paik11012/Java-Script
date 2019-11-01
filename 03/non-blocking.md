@@ -231,5 +231,11 @@ cdn import 후 사용
 </html>
 ```
 
+중간중간 콘솔로 꼭 꼭 찍어보기!!! console.log(response) 등등
 
+
+
+
+
+## PJT07 좋아요 수정하기
 
